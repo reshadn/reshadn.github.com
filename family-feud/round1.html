@@ -1,0 +1,92 @@
+<html>
+
+<head>
+    <title>Family Feud</title>
+    <link rel="stylesheet" href="styles.css" type="text/css"></link>
+</head>
+
+<body>
+    <div id="background">
+        <div id="wrong"></div>
+
+        <div id="rotating-answers">
+            <div class="title">
+                <h1>Name something you might find at the North Pole.</h1>
+            </div>
+            <div class="wrapper">
+                <div class="cell">
+                    <section class="container active" id="answer1" data-score="35">
+                        <div class="answer">
+                            <figure class="front"><span>1</span>
+                            </figure>
+                            <figure class="back">Snow <span class="score">35</span>
+                            </figure>
+                        </div>
+                    </section>
+
+                    <section class="container active" id="answer2" data-score="28">
+                        <div class="answer">
+                            <figure class="front"><span>2</span>
+                            </figure>
+                            <figure class="back">Elves <span class="score">28</span>
+                            </figure>
+                        </div>
+                    </section>
+
+                    <section class="container active" id="answer3" data-score="18">
+                        <div class="answer">
+                            <figure class="front"><span>3</span>
+                            </figure>
+                            <figure class="back">Santa Claus <span class="score">18</span>
+                            </figure>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="cell">
+
+                    <section class="container active" id="answer4" data-score="14">
+                        <div class="answer">
+                            <figure class="front"><span>4</span>
+                            </figure>
+                            <figure class="back">Santa's Workshop <span class="score">14</span>
+                            </figure>
+                        </div>
+                    </section>
+                    <section class="container active" id="answer5" data-score="5">
+                        <div class="answer">
+                            <figure class="front"><span>5</span>
+                            </figure>
+                            <figure class="back">Reindeer <span class="score">5</span>
+                            </figure>
+                        </div>
+                    </section>
+                    <section class="container">
+                        <div class="inactive"></div>
+                    </section>
+                </div>
+            </div>
+            <div id="score"></div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="strikes">
+        <button id="strike" type="button">Strike!</button>
+        Strike Count: <span id="strike-count">0</span>
+        <a id="resetStrikes"> reset</a>
+        </div>
+        <div class="rounds">
+        <a href="round1.html">Round 1</a>
+        <a href="round2.html">Round 2</a>
+        <a href="round3.html">Round 3</a>
+        </div>
+
+    </div>
+
+    <iframe id="sound" style="display: none;"></iframe>
+
+    <script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+    <script src="main.js" type="text/javascript"></script>
+</body>
+<html>
