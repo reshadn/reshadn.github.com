@@ -2,22 +2,22 @@ $(document).ready(function () {
 
     var audioBell, audioBuzzer,
         sum = 0,
-        teamScores = {
-            teamA: 0,
-            teamB: 0
-        },
+//        teamScores = JSON.parse(localStorage.getItem('scores')) || {
+//            teamA: 0,
+//            teamB: 0
+//        },
         strikeCount = 0,
         strike = '<span class="wrong">X</span>',
         strikeCountDisplay = $('#strike-count'),
         wrongDisplay = $('#wrong'),
-        strikesDisplay = $('#strikesDisplay'),
-        spanTeamAScore = $("#teamAScore"),
-        spanTeamBScore = $("#teamBScore"),
-        btnTeamAWins = $("#teamAWins"),
-        btnTeamBWins = $("#teamBWins");
+        strikesDisplay = $('#strikesDisplay');
+//        spanTeamAScore = $("#teamAScore"),
+//        spanTeamBScore = $("#teamBScore"),
+//        btnTeamAWins = $("#teamAWins"),
+//        btnTeamBWins = $("#teamBWins");
 
     var init = function () {
-        window.localStorage.setItem('scores', JSON.stringify(teamScores));
+//        window.localStorage.setItem('scores', JSON.stringify(teamScores));
 
         // setup audio files
         audioBell = document.createElement('audio');
@@ -29,8 +29,8 @@ $(document).ready(function () {
         audioBuzzer.setAttribute('autoplay', 'autoplay');
 
         // set team scores
-        spanTeamAScore.text(JSON.parse(localStorage.getItem('scores')).teamA);
-        spanTeamBScore.text(JSON.parse(localStorage.getItem('scores')).teamB);
+//        spanTeamAScore.text(JSON.parse(localStorage.getItem('scores')).teamA);
+//        spanTeamBScore.text(JSON.parse(localStorage.getItem('scores')).teamB);
 
         $('#rotating-answers').find('.active').on('click',
             function () {
@@ -65,13 +65,13 @@ $(document).ready(function () {
             strikesDisplay.fadeOut('fast');
         });
 
-        btnTeamAWins.on('click', function () {
-            sumTeamScores('A');
-        });
-
-        btnTeamBWins.on('click', function () {
-            sumTeamScores('B');
-        });
+//        btnTeamAWins.on('click', function () {
+//            sumTeamScores('A');
+//        });
+//
+//        btnTeamBWins.on('click', function () {
+//            sumTeamScores('B');
+//        });
 
 
     };
@@ -81,17 +81,17 @@ $(document).ready(function () {
         $('#score').text(sum);
     };
 
-    var sumTeamScores = function (winner) {
-        if (winner === 'A') {
-            teamScores.teamA = sum;
-            localStorage.setItem('scores', JSON.stringify(teamScores));
-            spanTeamAScore.text(JSON.parse(localStorage.getItem('scores')).teamA);
-        } else if (winner === 'B') {
-            teamScores.teamB = sum;
-            localStorage.setItem('scores', JSON.stringify(teamScores));
-            spanTeamBScore.text(JSON.parse(localStorage.getItem('scores')).teamB);
-        }
-    };
+//    var sumTeamScores = function (winner) {
+//        if (winner === 'A') {
+//            teamScores.teamA = sum;
+//            localStorage.setItem('scores', JSON.stringify(teamScores));
+//            spanTeamAScore.text(JSON.parse(localStorage.getItem('scores')).teamA);
+//        } else if (winner === 'B') {
+//            teamScores.teamB = sum;
+//            localStorage.setItem('scores', JSON.stringify(teamScores));
+//            spanTeamBScore.text(JSON.parse(localStorage.getItem('scores')).teamB);
+//        }
+//    };
 
     // Initialize
     init();
