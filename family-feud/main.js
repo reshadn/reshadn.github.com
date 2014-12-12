@@ -1,23 +1,25 @@
-var audioBell, audioBuzzer, sum, strikeCount, strike, wrong;
-
 $(document).ready(function () {
-    //    audioEl = document.getElementById('sound');
-    sum = 0;
-    strikeCount = 0;
-    strike = '<span class="wrong">X</span>'
-    wrong = $('#wrong');
 
+    var audioBell, audioBuzzer,
+        sum = 0,
+        teamScores = {
+            teamA: 0,
+            teamB: 0
+        },
+        strikeCount = 0,
+        strike = '<span class="wrong">X</span>',
+        strikeCountDisplay = $('#strike-count'),
+        wrongDisplay = $('#wrong'),
+        strikesDisplay = $('#strikesDisplay'),
+        spanTeamAScore = $("#teamAScore"),
+        spanTeamBScore = $("#teamBScore"),
+        btnTeamAWins = $("#teamAWins"),
+        btnTeamBWins = $("#teamBWins");
 
+    var init = function () {
+        window.localStorage.setItem('scores', JSON.stringify(teamScores));
 
-    //    var playBell = function () {
-    //        ifr.src = 'media/ff-clang.wav';
-    //    };
-    //
-    //    var playBuzzer = function () {
-    //        ifr.src = 'media/ff-strike2.wav';
-    //    };
-
-    var setupAudio = function () {
+        // setup audio files
         audioBell = document.createElement('audio');
         audioBell.setAttribute('src', 'media/ff-clang.wav');
         audioBell.setAttribute('autoplay', 'autoplay');
@@ -25,9 +27,11 @@ $(document).ready(function () {
         audioBuzzer = document.createElement('audio');
         audioBuzzer.setAttribute('src', 'media/ff-strike2.wav');
         audioBuzzer.setAttribute('autoplay', 'autoplay');
-    };
 
-    var setupAnswers = function () {
+        // set team scores
+        spanTeamAScore.text(JSON.parse(localStorage.getItem('scores')).teamA);
+        spanTeamBScore.text(JSON.parse(localStorage.getItem('scores')).teamB);
+
         $('#rotating-answers').find('.active').on('click',
             function () {
                 var answer = $(this).find('.answer');
@@ -37,36 +41,58 @@ $(document).ready(function () {
                     sumScores($(this).data("score"));
                 }
             });
-    };
 
-    var setupBuzzers = function () {
         $('#strike').on('click', function () {
             if (strikeCount < 2) {
                 strikeCount++;
-                $('#strike-count').text(strikeCount);
-                wrong.append(strike);
+                strikeCountDisplay.text(strikeCount);
+                wrongDisplay.append(strike);
+                strikesDisplay.append(strike);
                 audioBuzzer.play();
-                wrong.fadeIn('fast');
+                wrongDisplay.fadeIn('fast');
                 setTimeout(function () {
-                    wrong.fadeOut('fast');
+                    wrongDisplay.fadeOut('fast');
+                    strikesDisplay.fadeIn('fast');
                 }, 1500);
             }
         });
 
         $('#resetStrikes').on('click', function () {
-            wrong.text = ' ';
             strikeCount = 0;
-            $('#strike-count').text(strikeCount);
+            strikeCountDisplay.text(strikeCount);
+            wrongDisplay.text('');
+            strikesDisplay.text('');
+            strikesDisplay.fadeOut('fast');
         });
-    };
 
+        btnTeamAWins.on('click', function () {
+            sumTeamScores('A');
+        });
+
+        btnTeamBWins.on('click', function () {
+            sumTeamScores('B');
+        });
+
+
+    };
 
     var sumScores = function (score) {
         sum += score
         $('#score').text(sum);
     };
 
-    setupAudio();
-    setupAnswers();
-    setupBuzzers();
+    var sumTeamScores = function (winner) {
+        if (winner === 'A') {
+            teamScores.teamA = sum;
+            localStorage.setItem('scores', JSON.stringify(teamScores));
+            spanTeamAScore.text(JSON.parse(localStorage.getItem('scores')).teamA);
+        } else if (winner === 'B') {
+            teamScores.teamB = sum;
+            localStorage.setItem('scores', JSON.stringify(teamScores));
+            spanTeamBScore.text(JSON.parse(localStorage.getItem('scores')).teamB);
+        }
+    };
+
+    // Initialize
+    init();
 });

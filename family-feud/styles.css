@@ -21,6 +21,19 @@ figure {
 .title > h1 {
     color: white;
 }
+.cell {
+    display: table-cell;
+}
+.container {
+    width: 480px;
+    height: 5em;
+    position: relative;
+    margin: 0 auto 30px;
+    -webkit-perspective: 800px;
+    -moz-perspective: 800px;
+    -o-perspective: 800px;
+    perspective: 800px;
+}
 .answer {
     width: 100%;
     height: 100%;
@@ -35,11 +48,9 @@ figure {
     transform-style: preserve-3d;
 }
 .answer.flipped {
-    /*
     -webkit-transform: rotateX(180deg);
     -moz-transform: rotateX(180deg);
     -o-transform: rotateX(180deg);
-*/
     transform: rotateX(180deg);
 }
 .answer figure,
@@ -89,19 +100,24 @@ figure {
     transform: rotateX(180deg);
     outline: 2px solid black;
     font-size: 2.5em;
+    text-align: left;
+    padding-left:10px;
 }
-.cell {
-    display: table-cell;
+.score {
+    background: #C13237;
+    position: absolute;
+    right: 0;
+    width: 2em;
+    text-align: center;
 }
-.container {
-    width: 400px;
-    height: 5em;
-    position: relative;
-    margin: 0 auto 20px;
-    -webkit-perspective: 800px;
-    -moz-perspective: 800px;
-    -o-perspective: 800px;
-    perspective: 800px;
+div#strikesDisplay {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: white;
+    border: 8px solid #C13237;
+    color: #C13237;
+    font-size: 8em;
 }
 .footer {
     background: black;
@@ -113,14 +129,10 @@ figure {
     position: fixed;
     text-align: left;
     width: 100%;
-    font-size:2em;
+    font-size: 1.5em;
 }
 .strikes {
-    float:left;
-}
-
-.strikes > a {
-    font-size: .2em;
+    float: left;
 }
 .rounds {
     float: right;
@@ -128,12 +140,6 @@ figure {
 }
 .rounds > a {
     color: white;
-}
-.score {
-    background: #C13237;
-    position: absolute;
-    right: 0;
-    width: 2em;
 }
 .wrapper {
     display: table;
@@ -177,14 +183,10 @@ figure {
     border: #FFD33E solid 3px;
     color: #f0f060;
     font-family: "Courier New", Courier, monospace;
-    font-size: 90px;
-    height: 100px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
-    padding-right: 10px;
-    text-align: right;
-    width: 150px;
+    font-size: 7em;
+    margin: auto;
+    text-align: center;
+    width: 1.8em;
 }
 #wrong {
     position: fixed;
@@ -197,8 +199,8 @@ figure {
     background-color: white;
     border: 8px solid #C13237;
     color: #C13237;
-    font-size: 190px;
+    font-size: 15em;
     height: 30%;
-    margin: 10px;
-    width: 200px;
+    margin: 20px;
+    width: 100%;
 }

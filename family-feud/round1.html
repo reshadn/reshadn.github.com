@@ -9,6 +9,13 @@
     <div id="background">
         <div id="wrong"></div>
 
+        <div id="teams">
+            <div class="teamScore" id="teamA">Team A: <span id="teamAScore"></span>
+            </div>
+            <div class="teamScore" id="teamB">Team B: <span id="teamBScore"></span>
+            </div>
+        </div>
+
         <div id="rotating-answers">
             <div class="title">
                 <h1>Name something you might find at the North Pole.</h1>
@@ -66,21 +73,22 @@
                     </section>
                 </div>
             </div>
-            <div id="score"></div>
+            <div id="score">0</div>
         </div>
-        <div id="strikes"> test</div>
+        <div id="strikesDisplay" style="display: none;"></div>
     </div>
 
     <div class="footer">
         <div class="strikes">
-        <button id="strike" type="button">Strike!</button>
-        Strike Count: <span id="strike-count">0</span>
-        <a id="resetStrikes"> reset</a>
+            <button id="strike" type="button">Strike!</button>
+            <button id="resetStrikes">reset strikes</button>
+            <button id="teamAWins">Team A Wins!</button>
+            <button id="teamBWins">Team B Wins!</button>
         </div>
         <div class="rounds">
-        <a href="round1.html">Round 1</a>
-        <a href="round2.html">Round 2</a>
-        <a href="round3.html">Round 3</a>
+            <a href="round1.html">Round 1</a>
+            <a href="round2.html">Round 2</a>
+            <a href="round3.html">Round 3</a>
         </div>
 
     </div>
